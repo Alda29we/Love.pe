@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi enamorada?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    h1 {
+      color: #d62828;
+    }
+
+    p {
+      color: #333;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .yes {
+      background-color: #2a9d8f;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
+
+    .no {
+      background-color: #e63946;
+      color: white;
+    }
+
+    .audio-container {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    @media (max-width: 400px) {
+      .buttons {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="audio-container">
+    <p><strong>🎶 Reproduciendo audio:</strong></p>
+    <audio controls autoplay loop>
+      <source src="https://archive.org/download/mensaje_202505/mensaje.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+
+  <div class="card">
+    <h1>¿Quieres ser mi enamorada?</h1>
+    <p>Solo quería decirte algo que me guardé por un tiempo. Me gustas, y cada día que te veo, me gustas un poquito más. ❤️</p>
+    <div class="buttons">
+      <button class="yes" onclick="alert('¡Yay! 💖 Te quiero mucho')">Sí</button>
+      <button class="no" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const container = document.querySelector(".buttons");
+
+    function moverBoton() {
+      const maxX = container.clientWidth - noBtn.offsetWidth;
+      const maxY = container.clientHeight - noBtn.offsetHeight;
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // Para escritorio (hover)
+    noBtn.addEventListener("mouseover", moverBoton);
+    // Para móvil (touch)
+    noBtn.addEventListener("touchstart", function(e) {
+      e.preventDefault(); // Previene clic accidental
+      moverBoton();
+    });
+  </script>
+
+</body>
+</html>
